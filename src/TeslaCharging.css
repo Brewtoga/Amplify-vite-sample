@@ -109,6 +109,32 @@
   font-size: 16px;
 }
 
+/* Countdown Timer Styles */
+.countdown-item {
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+}
+
+.countdown-value {
+  font-weight: 700;
+  font-size: 18px;
+  color: #e31937;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  letter-spacing: 1px;
+}
+
+.countdown-value.overdue {
+  color: #dc3545;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
 /* Charges Section */
 .charges-section {
   margin-bottom: 30px;

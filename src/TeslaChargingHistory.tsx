@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TeslaCharging.css';
 
 interface TeslaCharge {
   date: string;
   amount: number;
+}
+
+interface TimeRemaining {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
 }
 
 const TeslaChargingHistory: React.FC = () => {
@@ -64,6 +71,44 @@ const TeslaChargingHistory: React.FC = () => {
   const totalAmount = teslaCharges.reduce((sum, charge) => sum + charge.amount, 0);
   const averageCharge = totalAmount / teslaCharges.length;
 
+  // Countdown timer state
+  const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isOverdue, setIsOverdue] = useState(false);
+
+  // Calculate time remaining until tomorrow at 9am
+  useEffect(() => {
+    const calculateTimeRemaining = () => {
+      const now = new Date();
+      const tomorrow = new Date();
+      tomorrow.setDate(now.getDate() + 1);
+      tomorrow.setHours(9, 0, 0, 0); // Set to 9:00 AM
+
+      const difference = tomorrow.getTime() - now.getTime();
+
+      if (difference <= 0) {
+        setIsOverdue(true);
+        setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setTimeRemaining({ days, hours, minutes, seconds });
+      setIsOverdue(false);
+    };
+
+    // Calculate immediately
+    calculateTimeRemaining();
+
+    // Update every second
+    const timer = setInterval(calculateTimeRemaining, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   // Split charges into batches of 10
   const chargeBatches = [];
   for (let i = 0; i < teslaCharges.length; i += 10) {
@@ -100,6 +145,21 @@ const TeslaChargingHistory: React.FC = () => {
           <div className="stat-item">
             <span className="stat-label">Average Charge:</span>
             <span className="stat-value">${averageCharge.toFixed(2)}</span>
+          </div>
+          <div className="stat-item countdown-item">
+            <span className="stat-label">Due Tomorrow 9:00 AM:</span>
+            <span className={`countdown-value ${isOverdue ? 'overdue' : ''}`}>
+              {isOverdue ? (
+                'OVERDUE!'
+              ) : (
+                <>
+                  {timeRemaining.days > 0 && <span>{timeRemaining.days}d </span>}
+                  <span>{timeRemaining.hours.toString().padStart(2, '0')}:</span>
+                  <span>{timeRemaining.minutes.toString().padStart(2, '0')}:</span>
+                  <span>{timeRemaining.seconds.toString().padStart(2, '0')}</span>
+                </>
+              )}
+            </span>
           </div>
         </div>
       </div>
