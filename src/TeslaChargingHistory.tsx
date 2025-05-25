@@ -128,7 +128,7 @@ const TeslaChargingHistory: React.FC = () => {
       <div className="header">
         <div className="tesla-logo">T</div>
         <h1>Tesla Charging History</h1>
-        <p>Account: George B. ...6891 | Period: March - May 2025</p>
+        <p>Account: George B.| Period: March - May 2025</p>
       </div>
       
       <div className="summary">
