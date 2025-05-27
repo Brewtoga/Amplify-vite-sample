@@ -44,9 +44,9 @@ const DiveBarBookClub: React.FC = () => {
     },
     // Set 2 (6-10)
     {
-      question: "What happens to Violet's hair due to her lightning signet?",
-      options: ["It turns white", "It becomes silver", "It gets silver streaks", "It stays the same"],
-      correct: 2
+      question: "What distinguishing feature does Violet have in her hair?",
+      options: ["Natural silver streaks from birth", "Lightning-caused white patches", "Magically blue tips", "Nothing unusual"],
+      correct: 0
     },
     {
       question: "What is the Apostasy?",
@@ -283,6 +283,7 @@ const DiveBarBookClub: React.FC = () => {
           <li>Current Quiz</li>
           <li>Leaderboard <span className="construction">(Under Construction)</span></li>
           <li>Discussion Board <span className="construction">(Under Construction)</span></li>
+          <li>Notes Page <span className="construction">(Under Construction)</span></li>
         </ul>
         
         <h3>Swag Shop</h3>
@@ -301,8 +302,15 @@ const DiveBarBookClub: React.FC = () => {
 
       <div className="main-content">
         <div className="header">
-          <div className="logo">🍺 Dive Bar Book Club 📚</div>
+          <div className="logo">🍸 Dive Bar Book Club 📚</div>
           <div className="tagline">"Where Literature Meets Last Call"</div>
+          <button className="refresh-btn" onClick={() => {
+            if (window.confirm('Are you sure you want to restart the quiz? This will reset all progress.')) {
+              window.location.reload();
+            }
+          }}>
+            🔄 Restart Quiz
+          </button>
         </div>
 
         <div className="current-book">
