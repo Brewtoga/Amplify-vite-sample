@@ -1,11 +1,10 @@
-
-import TeslaChargingHistory from './TeslaChargingHistory'
 import './App.css'
+import DiveBarBookClub from './DiveBarBookClub';
 
 function App() {
   return (
     <div className="App">
-      <TeslaChargingHistory />
+      <DiveBarBookClub />
     </div>
   );
 }
