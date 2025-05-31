@@ -1,23 +1,42 @@
-/* Dive Bar Book Club Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* DiveBarBookClub.css - Book Club Brown/Gold Theme Only */
 
-body {
+.book-club-container {
   font-family: 'Georgia', serif;
   background: linear-gradient(135deg, #2c1810, #8b4513, #2c1810);
   color: #f4f1e8;
   min-height: 100vh;
-}
-
-.book-club-container {
   display: flex;
-  min-height: 100vh;
+  position: relative;
 }
 
-.sidebar {
+/* Back to Menu Button */
+.book-club-container .back-to-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+}
+
+.book-club-container .back-to-menu-btn {
+  background: linear-gradient(135deg, #1a4a32, #4caf50);
+  color: white;
+  border: 2px solid #4caf50;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.book-club-container .back-to-menu-btn:hover {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.book-club-container .sidebar {
   width: 250px;
   background: rgba(0, 0, 0, 0.8);
   padding: 20px;
@@ -27,7 +46,7 @@ body {
   overflow-y: auto;
 }
 
-.sidebar h3 {
+.book-club-container .sidebar h3 {
   color: #d4af37;
   margin-bottom: 15px;
   font-size: 18px;
@@ -35,12 +54,12 @@ body {
   padding-bottom: 5px;
 }
 
-.sidebar ul {
+.book-club-container .sidebar ul {
   list-style: none;
   margin-bottom: 30px;
 }
 
-.sidebar li {
+.book-club-container .sidebar li {
   margin: 10px 0;
   padding: 8px;
   background: rgba(212, 175, 55, 0.1);
@@ -50,23 +69,23 @@ body {
   transition: all 0.3s ease;
 }
 
-.sidebar li:hover {
+.book-club-container .sidebar li:hover {
   background: rgba(212, 175, 55, 0.2);
 }
 
-.construction {
+.book-club-container .construction {
   font-style: italic;
   font-size: 12px;
   color: #888;
 }
 
-.main-content {
+.book-club-container .main-content {
   margin-left: 250px;
   flex: 1;
   padding: 40px;
 }
 
-.header {
+.book-club-container .header {
   text-align: center;
   margin-bottom: 40px;
   padding: 30px;
@@ -76,7 +95,7 @@ body {
   position: relative;
 }
 
-.refresh-btn {
+.book-club-container .refresh-btn {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -91,14 +110,14 @@ body {
   transition: all 0.3s ease;
 }
 
-.refresh-btn:hover {
+.book-club-container .refresh-btn:hover {
   background: #d4af37;
   color: #2c1810;
   transform: translateY(-1px);
   box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
 }
 
-.logo {
+.book-club-container .logo {
   font-size: 36px;
   font-weight: bold;
   color: #d4af37;
@@ -106,13 +125,13 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.tagline {
+.book-club-container .tagline {
   font-size: 18px;
   color: #f4f1e8;
   font-style: italic;
 }
 
-.current-book {
+.book-club-container .current-book {
   background: rgba(139, 69, 19, 0.3);
   padding: 20px;
   border-radius: 10px;
@@ -121,14 +140,14 @@ body {
   border: 1px solid #d4af37;
 }
 
-.book-title {
+.book-club-container .book-title {
   font-size: 24px;
   color: #d4af37;
   margin-bottom: 15px;
   font-weight: 600;
 }
 
-.progress-bar {
+.book-club-container .progress-bar {
   background: rgba(0, 0, 0, 0.5);
   height: 20px;
   border-radius: 10px;
@@ -136,20 +155,20 @@ body {
   overflow: hidden;
 }
 
-.progress-fill {
+.book-club-container .progress-fill {
   background: linear-gradient(90deg, #d4af37, #ffd700);
   height: 100%;
   transition: width 0.5s ease;
   border-radius: 10px;
 }
 
-.progress-text {
+.book-club-container .progress-text {
   color: #f4f1e8;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.countdown-item {
+.book-club-container .countdown-item {
   background: linear-gradient(135deg, #fff3cd, #ffeaa7);
   border: 1px solid #ffc107;
   border-radius: 8px;
@@ -160,12 +179,12 @@ body {
   align-items: center;
 }
 
-.stat-label {
+.book-club-container .stat-label {
   font-weight: 500;
   color: #666;
 }
 
-.countdown-value {
+.book-club-container .countdown-value {
   font-weight: 700;
   font-size: 18px;
   color: #e31937;
@@ -173,7 +192,7 @@ body {
   letter-spacing: 1px;
 }
 
-.countdown-value.overdue {
+.book-club-container .countdown-value.overdue {
   color: #dc3545;
   animation: pulse 1s infinite;
 }
@@ -184,7 +203,7 @@ body {
   100% { opacity: 1; }
 }
 
-.quiz-container {
+.book-club-container .quiz-container {
   background: rgba(0, 0, 0, 0.8);
   padding: 30px;
   border-radius: 15px;
@@ -192,7 +211,7 @@ body {
   margin-bottom: 20px;
 }
 
-.question {
+.book-club-container .question {
   font-size: 20px;
   margin-bottom: 25px;
   color: #f4f1e8;
@@ -200,14 +219,14 @@ body {
   font-weight: 500;
 }
 
-.options {
+.book-club-container .options {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-bottom: 25px;
 }
 
-.option {
+.book-club-container .option {
   background: rgba(139, 69, 19, 0.3);
   border: 2px solid transparent;
   padding: 15px 20px;
@@ -218,31 +237,31 @@ body {
   font-size: 16px;
 }
 
-.option:hover {
+.book-club-container .option:hover {
   border-color: #d4af37;
   background: rgba(212, 175, 55, 0.2);
   transform: translateX(5px);
 }
 
-.option.selected {
+.book-club-container .option.selected {
   border-color: #d4af37;
   background: rgba(212, 175, 55, 0.3);
   transform: translateX(5px);
 }
 
-.option.correct {
+.book-club-container .option.correct {
   border-color: #4caf50;
   background: rgba(76, 175, 80, 0.3);
   transform: translateX(5px);
 }
 
-.option.incorrect {
+.book-club-container .option.incorrect {
   border-color: #f44336;
   background: rgba(244, 67, 54, 0.3);
   transform: translateX(5px);
 }
 
-.next-btn {
+.book-club-container .next-btn {
   background: linear-gradient(135deg, #d4af37, #ffd700);
   color: #2c1810;
   border: none;
@@ -256,19 +275,19 @@ body {
   min-width: 150px;
 }
 
-.next-btn:hover:not(:disabled) {
+.book-club-container .next-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
 }
 
-.next-btn:disabled {
+.book-club-container .next-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
   background: #666;
 }
 
-.celebration {
+.book-club-container .celebration {
   text-align: center;
   padding: 50px;
   background: linear-gradient(135deg, #d4af37, #ffd700);
@@ -277,19 +296,19 @@ body {
   margin: 20px 0;
 }
 
-.celebration h2 {
+.book-club-container .celebration h2 {
   font-size: 48px;
   margin-bottom: 25px;
   animation: bounce 2s infinite;
 }
 
-.celebration p {
+.book-club-container .celebration p {
   font-size: 20px;
   margin-bottom: 30px;
   line-height: 1.6;
 }
 
-.next-book-btn {
+.book-club-container .next-book-btn {
   background: #2c1810;
   color: #d4af37;
   border: 3px solid #d4af37;
@@ -301,7 +320,7 @@ body {
   transition: all 0.3s ease;
 }
 
-.next-book-btn:hover {
+.book-club-container .next-book-btn:hover {
   background: #d4af37;
   color: #2c1810;
   transform: translateY(-2px);
@@ -314,7 +333,7 @@ body {
   60% { transform: translateY(-15px); }
 }
 
-.fireworks {
+.book-club-container .fireworks {
   position: fixed;
   top: 0;
   left: 0;
@@ -324,7 +343,7 @@ body {
   z-index: 1000;
 }
 
-.firework {
+.book-club-container .firework {
   position: absolute;
   width: 4px;
   height: 4px;
@@ -344,13 +363,13 @@ body {
   }
 }
 
-/* Responsive Design */
+/* Responsive Design - Book Club */
 @media (max-width: 1024px) {
-  .sidebar {
+  .book-club-container .sidebar {
     width: 200px;
   }
   
-  .main-content {
+  .book-club-container .main-content {
     margin-left: 200px;
     padding: 30px;
   }
@@ -361,7 +380,20 @@ body {
     flex-direction: column;
   }
   
-  .sidebar {
+  .book-club-container .back-to-menu {
+    position: static;
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid #d4af37;
+  }
+  
+  .book-club-container .back-to-menu-btn {
+    position: static;
+    display: inline-block;
+  }
+  
+  .book-club-container .sidebar {
     position: static;
     width: 100%;
     height: auto;
@@ -369,36 +401,44 @@ body {
     border-bottom: 3px solid #d4af37;
   }
   
-  .main-content {
+  .book-club-container .main-content {
     margin-left: 0;
     padding: 20px;
   }
   
-  .logo {
+  .book-club-container .refresh-btn {
+    position: static;
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .book-club-container .logo {
     font-size: 28px;
   }
   
-  .tagline {
+  .book-club-container .tagline {
     font-size: 16px;
   }
   
-  .book-title {
+  .book-club-container .book-title {
     font-size: 20px;
   }
   
-  .question {
+  .book-club-container .question {
     font-size: 18px;
   }
   
-  .celebration h2 {
+  .book-club-container .celebration h2 {
     font-size: 36px;
   }
   
-  .celebration p {
+  .book-club-container .celebration p {
     font-size: 18px;
   }
   
-  .countdown-item {
+  .book-club-container .countdown-item {
     flex-direction: column;
     gap: 10px;
     text-align: center;
@@ -406,55 +446,29 @@ body {
 }
 
 @media (max-width: 480px) {
-  .main-content {
+  .book-club-container .main-content {
     padding: 15px;
   }
   
-  .header {
+  .book-club-container .header {
     padding: 20px;
   }
   
-  .quiz-container {
+  .book-club-container .quiz-container {
     padding: 20px;
   }
   
-  .celebration {
+  .book-club-container .celebration {
     padding: 30px 20px;
   }
   
-  .next-book-btn {
+  .book-club-container .next-book-btn {
     padding: 12px 25px;
     font-size: 16px;
   }
   
-  .option {
+  .book-club-container .option {
     padding: 12px 15px;
     font-size: 15px;
-  }
-}
-
-/* Print Styles */
-@media print {
-  body {
-    background: white;
-    color: black;
-  }
-  
-  .sidebar {
-    display: none;
-  }
-  
-  .main-content {
-    margin-left: 0;
-    padding: 20px;
-  }
-  
-  .fireworks {
-    display: none;
-  }
-  
-  .next-btn,
-  .next-book-btn {
-    display: none;
   }
 }

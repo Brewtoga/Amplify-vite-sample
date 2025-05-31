@@ -14,7 +14,11 @@ interface TimeRemaining {
   seconds: number;
 }
 
-const DiveBarBookClub: React.FC = () => {
+interface DiveBarBookClubProps {
+  onBackToMenu?: () => void;
+}
+
+const DiveBarBookClub: React.FC<DiveBarBookClubProps> = ({ onBackToMenu }) => {
   const ironFlameQuestions: Question[] = [
     // Set 1 (1-5)
     {
@@ -277,6 +281,14 @@ const DiveBarBookClub: React.FC = () => {
 
   return (
     <div className="book-club-container">
+      {onBackToMenu && (
+        <div className="back-to-menu">
+          <button className="back-to-menu-btn" onClick={onBackToMenu}>
+            ← Back to Judy's Pub Menu
+          </button>
+        </div>
+      )}
+      
       <div className="sidebar">
         <h3>Navigation</h3>
         <ul>
