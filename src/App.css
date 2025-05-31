@@ -712,6 +712,16 @@ body {
   box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
 }
 
+.signin-btn {
+  background: linear-gradient(135deg, #2196f3, #42a5f5);
+  color: white;
+}
+
+.signin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+}
+
 .owner-btn {
   background: linear-gradient(135deg, #e53935, #ef5350);
   color: white;

@@ -15,8 +15,8 @@ interface MenuItem {
 }
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<'signin' | 'home' | 'bookclub' | 'owner' | 'manager' | 'employee'>('signin');
-  const [user, setUser] = useState<User | null>(null);
+  const [currentView, setCurrentView] = useState<'home' | 'signin' | 'bookclub' | 'owner' | 'manager' | 'employee'>('home');
+  const [user, setUser] = useState<User | null>({ userName: 'Guest', role: 'customer' });
 
   const menuItems: MenuItem[] = [
     {
@@ -52,8 +52,8 @@ const App: React.FC = () => {
   };
 
   const handleSignOut = () => {
-    setUser(null);
-    setCurrentView('signin');
+    setUser({ userName: 'Guest', role: 'customer' });
+    setCurrentView('home');
   };
 
   const renderRoleButtons = () => {
@@ -86,6 +86,17 @@ const App: React.FC = () => {
     }
 
     return buttons;
+  };
+
+  const renderSignInButton = () => {
+    if (user?.role === 'customer' && user?.userName === 'Guest') {
+      return (
+        <button className="nav-btn signin-btn" onClick={() => setCurrentView('signin')}>
+          🔑 Employee Sign In
+        </button>
+      );
+    }
+    return null;
   };
 
   if (currentView === 'signin') {
@@ -210,8 +221,12 @@ const App: React.FC = () => {
   return (
     <div className="app-container">
       <nav className="top-nav">
-        <span className="user-info">Welcome, {user?.userName} ({user?.role})</span>
-        <button className="signout-btn" onClick={handleSignOut}>Sign Out</button>
+        <span className="user-info">
+          {user?.userName === 'Guest' ? 'Welcome to Judy\'s Pub!' : `Welcome, ${user?.userName} (${user?.role})`}
+        </span>
+        {user?.userName !== 'Guest' && (
+          <button className="signout-btn" onClick={handleSignOut}>Sign Out</button>
+        )}
       </nav>
 
       <div className="main-content">
@@ -232,6 +247,7 @@ const App: React.FC = () => {
             <button className="nav-btn bookclub-btn" onClick={() => setCurrentView('bookclub')}>
               📚 Take Book Club Quiz
             </button>
+            {renderSignInButton()}
             {renderRoleButtons()}
           </div>
         </div>
